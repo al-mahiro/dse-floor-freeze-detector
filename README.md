@@ -1,8 +1,8 @@
 # dse-floor-freeze-detector
-[NOTE]\
+[NOTE:\
 **18 October 2026**\
 This is a work in progress thesis, any files/folders/documents in this repository are not valid/checked. Till now, We working on our local PC and safe keeping the files in personal google drive folder. This repository is constructed by claude by my instructions; The purpose of this repository is to create basic template for our thesis and for better understanding of github environment as I didn't had any prior experience with github repo.
-
+]
 
 
 Data cleaning and **price-freeze (floor-lock) detection** for Dhaka Stock Exchange (DSE) daily prices.
