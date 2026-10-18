@@ -26,10 +26,10 @@ This repository contains the first three steps of a thesis pipeline: **clean the
 git clone https://github.com/al-mahiro/dse-floor-freeze-detector.git
 cd dse-floor-freeze-detector
 pip install -e ".[dev]"      # numpy, pandas, openpyxl, matplotlib, pytest
-pytest -q                    # 17 tests
+pytest -q                    # 19 tests
 ```
 
-Python 3.9 or newer.
+Python 3.9 or newer. See [`docs/DATA.md`](docs/DATA.md) for the input format and data source, and [`docs/TIMELINE_SOURCES.md`](docs/TIMELINE_SOURCES.md) for where the regulatory timeline comes from.
 
 ## Quick start
 
@@ -50,6 +50,7 @@ Or from the command line:
 
 ```bash
 python -m dse_floor MYSTOCK.csv -o labelled.csv --diagnostics blocks.csv --sensitivity
+python -m dse_floor DSE_Data.csv -o GP.csv --tickers GP      # one security from a large panel
 ```
 
 Try it without any data: `python examples/synthetic_demo.py --plot`.
@@ -93,7 +94,7 @@ For each security and each contiguous run of `Floor_Period_Flag == 1` days (a *b
 | 29 Aug 2024 - 8 Jun 2026 | 2 securities (BEXIMCO, ISLAMIBANK) |
 | from 9 Jun 2026 | no floor |
 
-Company lists were transcribed from BSEC orders by the authors. **Re-verify them against the primary orders before relying on them** in new work. Each boundary's derivation is commented in the source.
+Company lists were transcribed from BSEC orders by the authors. [`docs/TIMELINE_SOURCES.md`](docs/TIMELINE_SOURCES.md) records the basis and verification status of each period, including open points. **Re-verify against the primary orders before relying on it** in new work.
 
 ## Data-quality notes
 
