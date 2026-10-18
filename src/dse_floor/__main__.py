@@ -14,6 +14,7 @@ def main(argv=None) -> None:
     p.add_argument("input", help="CSV/XLSX with Trading_Code, Date, Open, High, Low, Close, Volume")
     p.add_argument("-o", "--output", required=True, help="labelled output (.csv or .xlsx)")
     p.add_argument("--diagnostics", help="write per-block diagnostics to this CSV")
+    p.add_argument("--tickers", nargs="+", help="only process these Trading_Code values")
     p.add_argument("--lower-q", type=float, default=0.35)
     p.add_argument("--min-support", type=int, default=3)
     p.add_argument("--tick-size", type=float, default=0.10)
@@ -23,6 +24,11 @@ def main(argv=None) -> None:
     a = p.parse_args(argv)
 
     raw = load_ohlcv(a.input)
+    if a.tickers:
+        wanted = {t.strip().upper() for t in a.tickers}
+        raw = raw[raw["Trading_Code"].astype("string").str.strip().str.upper().isin(wanted)]
+        if raw.empty:
+            raise SystemExit(f"No rows found for tickers: {sorted(wanted)}")
     out, diag = run_pipeline(
         raw, lower_q=a.lower_q, min_support=a.min_support, tick_size=a.tick_size,
         return_diagnostics=True, drop_weekend_rows=a.drop_weekend_rows,
