@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "dse-floor-freeze-detector: price-freeze detection for Dhaka Stock Exchange data"
+type: software
+version: 0.1.0
+authors:
+  - given-names: "Abdullah Al"
+    family-names: "Mahi"
+  - given-names: "Saptaporna"
+    family-names: "Dey"
+license: MIT
+abstract: >-
+  Data cleaning and rule-based detection of BSEC floor-price freezes in DSE
+  closing prices. Part of an undergraduate thesis at the Department of
+  Industrial and Production Engineering, BUET, supervised by Dr. Nafisa Mahbub.

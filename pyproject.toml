@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dse-floor-freeze-detector"
+version = "0.1.0"
+description = "Data cleaning and price-freeze (BSEC floor-lock) detection for Dhaka Stock Exchange data"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Abdullah Al Mahi" }, { name = "Saptaporna Dey" }]
+dependencies = ["numpy>=1.23", "pandas>=1.5", "openpyxl>=3.0"]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.6"]
+dev = ["pytest>=7", "matplotlib>=3.6"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
