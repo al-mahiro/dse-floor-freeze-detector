@@ -15,6 +15,10 @@ This repository contains the first three steps of a thesis pipeline: **clean the
 
 *Figure 1. Observed closing price of Grameenphone (GP), 2019 to April 2025. Shading marks days on which a BSEC floor applied to GP under our regulatory classification. The close stayed at exactly Tk 286.6 for 342 consecutive trading days and fell sharply once the floor was lifted.*
 
+Figure 1 is a worked example on real data: the daily closing price of Grameenphone (GP) from the public dataset described under Data-quality notes. The hatched band is the exchange closure (26 Mar to 30 May 2020), when no prices exist. The shaded bands are the days on which a BSEC floor applied to GP under the regulatory timeline below. From 6 Oct 2022 to 29 Feb 2024 the close sits flat at Tk 286.6 (red line) for 342 consecutive trading days, and then falls sharply, to roughly Tk 225 to 250 over the following months, once the floor is lifted. A close that does not move for 342 sessions is a regulatory artefact rather than a market-clearing price, which is exactly the pattern the detector is built to flag. Treating those days as genuine zero returns would understate GP's volatility.
+
+The lock also starts more than two months after the floor period begins (31 Jul 2022). This is why `Floor_Period_Flag` (a floor could bind) and `Floor_Locked_Flag` (the close is actually frozen) are kept as separate columns.
+
 ## What is in here
 
 | Step | Module | What it does | Adds columns |
@@ -58,7 +62,7 @@ python -m dse_floor MYSTOCK.csv -o labelled.csv --diagnostics blocks.csv --sensi
 python -m dse_floor DSE_Data.csv -o GP.csv --tickers GP      # one security from a large panel
 ```
 
-Try it without any data: `python examples/synthetic_demo.py --plot`.
+To check that the install works without any market data, run the bundled synthetic example. It generates artificial prices for testing only (they are not the GP data shown in Figure 1): `python examples/synthetic_demo.py --plot`.
 
 ### Using one step at a time
 
@@ -104,7 +108,7 @@ Company lists were transcribed from BSEC orders by the authors. [`docs/TIMELINE_
 ## Data-quality notes
 
 - **Trading calendar.** DSE trades Sunday to Thursday and was closed 26 Mar - 30 May 2020. `clean_ohlcv` *warns* when it finds Friday/Saturday rows or rows inside the closure (a sign of misaligned dates in the raw export). Removal is opt-in via `drop_weekend_rows=True` and `drop_closure_rows=True`.
-- **No data included.** Raw and derived market data are not redistributed here; bring your own export (the thesis used a public Harvard Dataverse DSE dataset ending 8 April 2025).
+- **Data not redistributed.** Figure 1 is drawn from real DSE closing prices, but the raw and derived market data are not shared in this repository; bring your own export (the thesis used a public Harvard Dataverse DSE dataset ending 8 April 2025). The synthetic example mentioned in Quick start generates artificial prices on the fly and contains no real market data.
 - **Sensitivity grid.** `sensitivity_grid` reports locked-day counts over `(lower_q, min_support)`. Counts that never change can mean robustness *or* a grid that never alters the modal estimate, so read it together with the per-block diagnostics.
 
 ## Known limitations
