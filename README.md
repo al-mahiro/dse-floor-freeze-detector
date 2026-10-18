@@ -1,7 +1,7 @@
-# dse-floor-freeze-detector
+# dse-floor-freeze-detector [Work In Progress]
 [NOTE:\
 **18 October 2026**\
-This is a work in progress thesis, any files/folders/documents in this repository are not valid/checked. Till now, We working on our local PC and safe keeping the files in personal google drive folder. This repository is constructed by claude by my instructions; The purpose of this repository is to create basic template for our thesis and for better understanding of github environment as I didn't had any prior experience with github repo.
+This is a work in progress thesis, any files/folders/documents in this repository are not final valid/checked. This is for a overall image of the work and basic code of data cleaning is uploaded. Till now, We working on our local PC and safe keeping the files in personal google drive folder. This repository is constructed by claude by my instructions; The purpose of this repository is to create basic template for our thesis and for better understanding of github environment as I didn't had any prior experience with github repo.
 ]
 
 
