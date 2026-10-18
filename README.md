@@ -11,9 +11,9 @@ Between 2020 and 2026 the Bangladesh Securities and Exchange Commission (BSEC) i
 
 This repository contains the first three steps of a thesis pipeline: **clean the data, work out when a floor was in force, and flag the days on which a price was actually frozen by it.** The output is the input to the later bias-correction stages (see [Project context](#project-context)).
 
-![Synthetic example: closing price, floor window and detected locked days](docs/example_floor_windows.png)
+![Observed closing price of Grameenphone (GP), 2019 to April 2025, with BSEC floor periods shaded](docs/gp_floor_figure.png)
 
-*Synthetic data (the demo ships no real prices). Shaded: days when a floor regime applied. Red: closes flagged as floor-locked.*
+*Figure 1. Observed closing price of Grameenphone (GP), 2019 to April 2025. Shading marks days on which a BSEC floor applied to GP under our regulatory classification. The close stayed at exactly Tk 286.6 for 342 consecutive trading days and fell sharply once the floor was lifted.*
 
 ## What is in here
 
