@@ -23,6 +23,10 @@ When a regulator floors prices for long periods, recorded closes stop reflecting
 
 Planned milestones: HAM parameters converged by early February 2027, pipeline integrated by mid-March 2027, significance tests complete by late April 2027, submission 7 May 2027.
 
+## Tooling planned for later steps
+
+The 3-state HMM is planned with `hmmlearn`; the CVaR step is a linear program.
+
 ## Design notes for Step 4 (not in this repo)
 
 - The CSV model follows Hsieh and Yang (2009, *Journal of Empirical Finance* 16, 337-351), specialised to a **one-sided lower bound**: the BSEC rule is a floor only, so the upper-limit branch of the original two-sided circuit-breaker model is dropped.
